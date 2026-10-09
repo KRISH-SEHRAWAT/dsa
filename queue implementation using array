@@ -1,0 +1,51 @@
+#include<stdio.h>
+#define SIZE 5
+int Q[SIZE];
+int F = -1, R = -1;
+void Enqueue(int x)
+{
+    if (R == SIZE -1)
+    {
+        printf("Queue is full\n");
+
+    }
+    else
+    {
+        if (F == -1)
+        {
+            F = 0;
+        }
+        R++;
+        Q[R] = x;
+        printf("Inserted: %d\n", x);
+    }
+}
+void Dequeue()
+{
+    if(F == -1 || F > R)
+    {
+        printf("Queue is empty\n");
+
+    }
+    else
+    {
+        printf("Deleted element is: %d\n", Q[F]);
+        F++;
+        if (F> R)
+        {
+            F = R = -1;
+        }
+    }
+}
+void main()
+{
+    Enqueue(10);
+    Enqueue(20);
+    Enqueue(30);
+    Enqueue(40);
+    Enqueue(50);
+    Dequeue();
+    Dequeue();
+
+    Enqueue(25);
+}
